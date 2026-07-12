@@ -15,9 +15,9 @@ jobs:
         with:
           dotnet-version: '10.0.x'
       - name: Restore dependencies
-        run: dotnet restore ./Verve.Identity.Core.sln
+        run: dotnet restore ./src/Verve.Identity.Core.sln
       - name: Build
-        run: dotnet build ./Verve.Identity.Core.sln --configuration Release --no-restore
+        run: dotnet build ./src/Verve.Identity.Core.sln --configuration Release --no-restore
   test:
     runs-on: ubuntu-latest
     steps:
