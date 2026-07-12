@@ -26,4 +26,4 @@ jobs:
         run: echo "Running tests"      
       - uses: actions/checkout@v3
       - name: Tests 
-        run: dotnet test ./Verve.Identity.Core.Tests/Verve.Identity.Core.Tests.csproj --configuration Release --no-build --verbosity normal
+        run: dotnet test ./src/Verve.Identity.Core.Tests/Verve.Identity.Core.Tests.csproj --configuration Release --no-build --verbosity normal
