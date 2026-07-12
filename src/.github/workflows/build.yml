@@ -1,0 +1,29 @@
+# github action to build and test the project on push and pull request events
+name: Build and Test
+on: 
+  push:
+    branches: [ master, feature/* ]
+  pull_request:
+    branches: [ master ]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup .NET Core
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '10.0.x'
+      - name: Restore dependencies
+        run: dotnet restore ./Verve.Identity.Core.sln
+      - name: Build
+        run: dotnet build ./Verve.Identity.Core.sln --configuration Release --no-restore
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      
+      - name: "Print runnint tests"
+        run: echo "Running tests"      
+      - uses: actions/checkout@v3
+      - name: Tests 
+        run: dotnet test ./Verve.Identity.Core.Tests/Verve.Identity.Core.Tests.csproj --configuration Release --no-build --verbosity normal
